@@ -1,2 +1,2 @@
-# Uber-Data-Analysis
-The Uber Analytics Dashboard project was a comprehensive analytics solution developed using Python, SQL, Jupyter Notebook, Mage, and Google Cloud Platform (GCP). The goal of this project 
+# Neetcode 150 Roadmap
+I aim to solve Neetcode's roadmap which comprises a more beginner-friendly and comprehensive list of technical problems
