@@ -142,51 +142,25 @@ def longestConsecutive(nums):
 # 8. Valid Sudoku 
 def isValidSudoku(lstStr): 
 
-    hset = set()
+    # store a set for each column, row, and blocks to track numbers
+    rows = [set() for _ in range(9)]
+    cols = [set() for _ in range(9)]
+    blocks = [[set() for _ in range(3)] for _ in range(3)]
 
-    if len(lstStr) == 0:
-        return False
-
-    # Checks horizontal row
-    for i in range(len(lstStr)):
-        for j in range(len(lstStr)):
-            if lstStr[i][j] == ".":
-                continue
-            if lstStr[i][j] in hset:
+    for i in range(9):
+        for j in range(9):
+            curr = lstStr[i][j]
+            if curr == ".":
+                continue 
+            # checks if curr is in the particular set's row/column/block 
+            if curr in rows[i] or curr in cols[j] or curr in blocks[i//3][j//3]:
                 return False
-            else:
-                hset.add(lstStr[i][j])
-        hset.clear()
+            # adds to particular sets if number is not inside sets
+            rows[i].add(curr)
+            cols[j].add(curr)
+            blocks[i//3][j//3].add(curr)
     
-    # Checks vertical row
-    x, i = 0
-    while i < len(lstStr[0]):
-        while x < len(lstStr):
-            if lstStr[i][j] == ".":
-                continue
-            if lstStr[x][i] in hset:
-                return False
-            else:
-                hset.add(lstStr[x][i])
-                x += 1             
-        hset.clear()
-        i += 1
-
-    # Check 3 x 3 grid 
-    for i in range(0,len(lstStr[0]),3):
-        for j in range(0,len(lstStr),3):
-            if lstStr[i][j] == ".":
-                continue
-            else: 
-                if lstStr[i][j]  or lstStr[i+1][j] or lstStr[i+2][j] or lstStr[i][j+1] or lstStr[i][j+2] or lstStr[i+1][j+1] or lstStr[i+2][j+2] or lstStr[i+2][j+2] in hset:
-                    return False
-                else:
-                    hset.add(lstStr[i][j])
-                    hset.add(lstStr[i+1][j])
-                    hset.add(lstStr[i+2][j])
-
-    return True 
-
+    return True
 
 
 
