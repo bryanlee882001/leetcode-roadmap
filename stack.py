@@ -39,32 +39,16 @@ class MinStack:
 
     def getMin(self) -> int:
         return self.minStack[-1]
-stackObj = MinStack()
-stackObj.push(3)
-stackObj.push(-2)
-stackObj.push(-5)
-stackObj.pop()
-stackObj.push(-3)
-stackObj.push(4)
+    
+# stackObj = MinStack()
+# stackObj.push(3)
+# stackObj.push(-2)
+# stackObj.push(-5)
+# stackObj.pop()
+# stackObj.push(-3)
+# stackObj.push(4)
 # print(stackObj.top())
 # print(stackObj.getMin())
 
 
-def binarySearch(nums,target):
-    
-    left,right=0,len(nums)-1
-    while left<=right:
-        mid=left+(right-left)//2
-        if nums[mid]>target:
-            right=mid-1
-        elif nums[mid]<target:
-            left=mid+1
-        else:
-            return mid
-    return -1
-
-
-nums = [-1,0,3,5,9,12,18,19,20]
-target = 19
-print(binarySearch(nums,target))
 
