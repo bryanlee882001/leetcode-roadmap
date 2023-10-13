@@ -44,13 +44,22 @@ def twoSum(numbers, target):
 # print(twoSum(numbers,target))
 
 
+#3 Container with Most Water
+def maxArea(height):
+    maxArea = 0 
+    left = 0 
+    right = len(height) - 1
 
-def solution(S):
-    # Implement your solution here
-    arr = S.split("\n")
-    for i in arr:
-        if "NULL" in i:
-            arr.remove(i)
-    return "\n".join(arr)
+    while left < right: 
+        currArea = min(height[left], height[right]) * (right - left)    
+        maxArea = max(maxArea, currArea)
+        
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+    
+    return maxArea
 
-print(solution("id,name,age,score\n1,Jack,NULL,12\n17,Betty,28,11"))
+# print(maxArea([1,8,6,2,5,4,8,3,7]))
+print(maxArea([2,3,4,5,18,17,6]))
