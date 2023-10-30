@@ -65,6 +65,52 @@ def evalRPN(tokens):
     
     return int(p[0])
 
-tokens = ["2","1","+","3","*"]
-print(evalRPN(tokens))
+# tokens = ["2","1","+","3","*"]
+# print(evalRPN(tokens))
         
+
+# 4. Daily Temperatures
+# def dailyTemperatures(temp):
+    
+    arr = []
+
+    # p1 will keep track of the indexes, and p2 will keep track of increasing temperatures
+    p1 = 0 
+
+    while p1 <= len(temp)-1:
+    
+        if p1 == len(temp)-1:
+            arr.append(0)
+            return arr
+
+        if temp[p1+1] > temp[p1]:
+            arr.append(1)             
+        else: 
+            count = 2
+            p2 = p1+2
+            while p2 <= len(temp)-1:
+                if temp[p2] > temp[p1]:
+                    arr.append(count)
+                    break
+                count += 1 
+                p2 += 1 
+        p1 += 1
+    
+    return arr 
+
+def dailyTemperatures(temperatures):
+    
+    stk = []
+    days = [0] * len(temperatures)
+
+    for i in range(len(temperatures)):
+        
+        while len(stk) != 0 and temperatures[stk[-1]] < temperatures[i]:
+            unsettledDays = stk.pop()
+            days[unsettledDays] = i - unsettledDays
+
+        stk.append(i)
+    return days 
+
+temperatures = [73,74,75,71,69,72,76,73]
+print(dailyTemperatures(temperatures))
