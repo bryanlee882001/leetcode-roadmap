@@ -34,8 +34,16 @@ def searchMatrix(matrix, target):
             row += 1 
         
     return False
+# matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]] 
+# target = 13
+# print(searchMatrix(matrix,target)) 
 
 
-matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]] 
-target = 13
-print(searchMatrix(matrix,target)) 
+def minEatingSpeed(piles,h):
+    pass
+
+
+
+piles = [3,6,7,11]
+h = 8
+print(minEatingSpeed(piles,h))
